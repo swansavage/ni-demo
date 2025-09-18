@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontakt – 4-block Video Test</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font: 16px/1.5 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 48px auto;
+      padding: 0 20px;
+    }
+    .block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      margin: 64px 0;
+    }
+    .block:nth-child(even) {
+      grid-template-columns: 1fr 1fr;
+    }
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #000;
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+    p {
+      margin: 0 0 20px;
+      color: #ccc;
+    }
+    .cta {
+      display: inline-block;
+      padding: 10px 16px;
+      border: 1px solid #fff;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .cta:hover {
+      background: #fff;
+      color: #000;
+    }
+    /* alternate layout */
+    .block:nth-child(odd) .media { order: 1; }
+    .block:nth-child(odd) .copy { order: 2; }
+    .block:nth-child(even) .media { order: 2; }
+    .block:nth-child(even) .copy { order: 1; }
+    /* mobile */
+    @media (max-width: 880px) {
+      .block {
+        grid-template-columns: 1fr;
+      }
+      .block .media, .block .copy {
+        order: 0;
+      }
+      h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <!-- Block 1 -->
+    <section class="block">
+      <div class="media">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/Breadth of Instruments.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="copy">
+        <h2>Play with thousands of pro sounds at your fingertips</h2>
+        <p>Kontakt 8 comes loaded with over 1,000 instruments, from full orchestral sections to choirs, drums, synths, world instruments, and more. Because Kontakt is the industry standard for developing your own libraries, you’ll have access to thousands of partner and indie libraries trusted by pros.
+</p>
+        <a class="cta" href="#gallery">See what comes with Kontakt</a>
+      </div>
+    </section>
+
+    <!-- Block 2 -->
+    <section class="block">
+      <div class="copy">
+        <h2>Bring your tracks to life with expressive instruments</h2>
+        <p>Kontakt isn’t just about sound, it’s about feel. Humanized performances and expressive instruments respond with the nuance of real players, so your music breathes with life.</p>
+        <a class="cta" href="#expressive">Explore the sounds</a>
+      </div>
+      <div class="media">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/Orchestral.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- Block 3 -->
+    <section class="block">
+      <div class="media">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/Tools.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="copy">
+        <h2>Sketch, shape, and grow your ideas into full arrangements</h2>
+        <p>Kontakt gives you the tools to move from a quick sketch to a complete track. Start with a riff or a chord, then build it out with progressions, variations, and customization all the way through to finished arrangement.</p>
+        <a class="cta" href="#tools">Explore the creative tools</a>
+      </div>
+    </section>
+
+    <!-- Block 4 -->
+    <section class="block">
+      <div class="copy">
+        <h2>Keep your creativity flowing with Leap</h2>
+        <p>Leap is Kontakt’s fun, performance-ready sampler that captures ideas as they happen. Load loops, one-shots, or kits and start reshaping them in real time. It combines the spontaneity of a looper with the freedom of sampling, so you can experiment and turn impromptu moments into tracks without slowing down.</p>
+        <a class="cta" href="#leap">Watch Leap in action</a>
+      </div>
+      <div class="media">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/Leap.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
