@@ -5,71 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kontakt – 4-block Video Test</title>
   <style>
+    :root {
+      --maxw: 1100px;
+      --gap: 32px;
+      --pad: 20px;
+      --blk-m: 64px;
+    }
     body {
       margin: 0;
       background: #000;
       color: #fff;
       font: 16px/1.5 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    .wrap {
-      max-width: 1100px;
-      margin: 48px auto;
-      padding: 0 20px;
-    }
+    .wrap { max-width: var(--maxw); margin: 48px auto; padding: 0 var(--pad); }
+
     .block {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      gap: var(--gap);
       align-items: center;
-      margin: 64px 0;
+      margin: var(--blk-m) 0;
     }
-    .block:nth-child(even) {
-      grid-template-columns: 1fr 1fr;
-    }
-    video {
-      display: block;
+    /* alternate sides */
+    .block:nth-child(odd) .media { order: 1; }
+    .block:nth-child(odd) .copy  { order: 2; }
+    .block:nth-child(even) .media { order: 2; }
+    .block:nth-child(even) .copy  { order: 1; }
+
+    /* uniform media frame */
+    .media {
+      position: relative;
       width: 100%;
-      height: auto;
+      aspect-ratio: 16 / 9;         /* uniform height regardless of source */
+      background: #000;             /* clean letterbox background */
+      overflow: hidden;
+    }
+    .media video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;            /* fills frame; crops if source isn't 16:9 */
+      display: block;
       background: #000;
     }
-    h2 {
-      margin: 0 0 12px;
-      font-weight: 700;
-      font-size: 28px;
-      line-height: 1.2;
-    }
-    p {
-      margin: 0 0 20px;
-      color: #ccc;
-    }
+
+
+    h2 { margin: 0 0 12px; font-weight: 700; font-size: 28px; line-height: 1.2; }
+    p  { margin: 0 0 20px; color: #ccc; }
     .cta {
-      display: inline-block;
-      padding: 10px 16px;
-      border: 1px solid #fff;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
+      display: inline-block; padding: 10px 16px;
+      border: 1px solid #fff; color: #fff; text-decoration: none; font-weight: 600;
     }
-    .cta:hover {
-      background: #fff;
-      color: #000;
+    .cta:hover { background: #fff; color: #000; }
+
+    /* responsive tweaks */
+    @media (max-width: 992px) {
+      .wrap { margin: 36px auto; }
+      h2 { font-size: 24px; }
     }
-    /* alternate layout */
-    .block:nth-child(odd) .media { order: 1; }
-    .block:nth-child(odd) .copy { order: 2; }
-    .block:nth-child(even) .media { order: 2; }
-    .block:nth-child(even) .copy { order: 1; }
-    /* mobile */
     @media (max-width: 880px) {
-      .block {
-        grid-template-columns: 1fr;
-      }
-      .block .media, .block .copy {
-        order: 0;
-      }
-      h2 {
-        font-size: 22px;
-      }
+      .block { grid-template-columns: 1fr; gap: 20px; margin: 40px 0; }
+      .block .media, .block .copy { order: 0; }
+      h2 { font-size: 22px; }
     }
   </style>
 </head>
@@ -79,14 +77,13 @@
     <!-- Block 1 -->
     <section class="block">
       <div class="media">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="assets/videos/Breadth of Instruments.mp4" type="video/mp4">
         </video>
       </div>
       <div class="copy">
         <h2>Play with thousands of pro sounds at your fingertips</h2>
-        <p>Kontakt 8 comes loaded with over 1,000 instruments, from full orchestral sections to choirs, drums, synths, world instruments, and more. Because Kontakt is the industry standard for developing your own libraries, you’ll have access to thousands of partner and indie libraries trusted by pros.
-</p>
+        <p>Kontakt 8 comes loaded with over 1,000 instruments, from full orchestral sections to choirs, drums, synths, world instruments, and more. Because Kontakt is the industry standard for developing your own libraries, you’ll have access to thousands of partner and indie libraries trusted by pros.</p>
         <a class="cta" href="#gallery">See what comes with Kontakt</a>
       </div>
     </section>
@@ -99,7 +96,7 @@
         <a class="cta" href="#expressive">Explore the sounds</a>
       </div>
       <div class="media">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="assets/videos/Orchestral.mp4" type="video/mp4">
         </video>
       </div>
@@ -108,13 +105,13 @@
     <!-- Block 3 -->
     <section class="block">
       <div class="media">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="assets/videos/Tools.mp4" type="video/mp4">
         </video>
       </div>
       <div class="copy">
         <h2>Sketch, shape, and grow your ideas into full arrangements</h2>
-        <p>Kontakt gives you the tools to move from a quick sketch to a complete track. Start with a riff or a chord, then build it out with progressions, variations, and customization all the way through to finished arrangement.</p>
+        <p>Kontakt gives you the tools to move from a quick sketch to a complete track. Start with a riff or a chord, then build it out with progressions, variations, and customization all the way through to a finished arrangement.</p>
         <a class="cta" href="#tools">Explore the creative tools</a>
       </div>
     </section>
@@ -127,7 +124,7 @@
         <a class="cta" href="#leap">Watch Leap in action</a>
       </div>
       <div class="media">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline preload="metadata">
           <source src="assets/videos/Leap.mp4" type="video/mp4">
         </video>
       </div>
